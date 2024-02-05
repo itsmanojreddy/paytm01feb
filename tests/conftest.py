@@ -11,7 +11,7 @@ def setup(request):
     s = Service(ChromeDriverManager().install())
     chrome_options = Options()
     # chrome_options.add_argument("window-size=1920,1080")
-    chrome_options.add_argument("--start-maximized")
+    chrome_options.add_argument('--headless')
     Web_driver = webdriver.Chrome(service=s, options=chrome_options)
     Web_driver.maximize_window()
     Web_driver.get("https://paytm.com/")
