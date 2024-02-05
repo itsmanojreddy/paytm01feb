@@ -14,6 +14,6 @@ def setup(request):
     chrome_options.add_argument("--start-maximized")
     Web_driver = webdriver.Chrome(service=s, options=chrome_options)
     Web_driver.maximize_window()
-    Web_driver.get("https://www.facebook.com")
+    Web_driver.get("https://paytm.com/")
     yield
     Web_driver.close()
