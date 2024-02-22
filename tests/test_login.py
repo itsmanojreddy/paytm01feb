@@ -11,7 +11,5 @@ from tests.conftest import setup
 def test_verify_sigIn_button(setup):
     print("In Launch Test")
     wait = WebDriverWait(setup, 10)
-
     email = wait.until(EC.visibility_of_element_located((By.XPATH, "//span[text()='Sign In']")))
-    email.click()
-    time.sleep(10)
+    setup.find_element(By.XPATH , "//span[text()='Sign In']").click()
