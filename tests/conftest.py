@@ -13,7 +13,7 @@ def setup(request):
     s = Service(ChromeDriverManager().install())
     chrome_options = Options()
     chrome_options.add_argument("window-size=1920,1080")
-    # chrome_options.add_argument("disable-popup-blocking")
+    chrome_options.add_argument("disable-popup-blocking")
     chrome_options.add_argument(
         "--disable-notifications")  # disable notifications like allow location/Show notifications
     # chrome_options.add_argument('--headless')
