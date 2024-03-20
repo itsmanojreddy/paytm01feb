@@ -16,7 +16,7 @@ def setup(request):
     chrome_options.add_argument("disable-popup-blocking")
     chrome_options.add_argument(
         "--disable-notifications")  # disable notifications like allow location/Show notifications
-    chrome_options.add_argument('--headless')
+    # chrome_options.add_argument('--headless')
     Web_driver = webdriver.Chrome(service=s, options=chrome_options)
     Web_driver.maximize_window()
     # Web_driver.get("https://paytm.com/")
@@ -25,8 +25,12 @@ def setup(request):
     Web_driver.close()
 
 
+# @pytest.fixture(scope='function', autouse=True)
+# def setupFunction():
+#     Web_driver.get("https://www.amazon.in/")
+
+
 @pytest.fixture(autouse=True)
 def eachTest():
-    Web_driver.get("https://www.policybazaar.com/")
+    Web_driver.get("https://www.amazon.in/")
     yield
-

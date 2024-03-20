@@ -19,8 +19,16 @@ class amazonHomePage(Baseclass):
         return (By.ID, "searchDropdownBox")
 
     @property
+    def search_Suggestions(self):
+        return "//*[contains(@class,'s-suggestion-ell')]"
+
+    @property
     def searchbox(self):
         return self.driver.find_element(By.ID, "twotabsearchtextbox")
+
+    @property
+    def searchbox_Suggestion(self):
+        return (By.XPATH, "//*[contains(@class,'s-suggestion-ell')]")
 
     def select_All_dropdown(self, val):
         ele = WebDriverWait(self.driver, 10).until(EC.presence_of_element_located(self.all_dropdown))
@@ -34,6 +42,12 @@ class amazonHomePage(Baseclass):
         js.clickjs(self.driver, ele)
         act.move_to_element(ele).click(ele).send_keys(val).perform()
 
-    if __name__ == "__main__":
-        print(
-            "Print inside all the lloooops====================================================================================")
+    def click_suggested_Search(self, index):
+        WebDriverWait(self.driver, 10).until(
+            EC.presence_of_element_located(self.searchbox_Suggestion))
+        li = self.driver.find_elements(By.XPATH, self.search_Suggestions)
+        li[index - 1].click()
+
+        if __name__ == "__main__":
+            print(
+                "Print inside all the lloooops====================================================================================")
