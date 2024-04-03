@@ -30,6 +30,20 @@ class amazonHomePage(Baseclass):
     def searchbox_Suggestion(self):
         return (By.XPATH, "//*[contains(@class,'s-suggestion-ell')]")
 
+    @property
+    def first_result(self):
+        return (By.XPATH,
+                "//*[@data-cy='title-recipe']//*[contains(@class,'a-link-normal s-underline-text s-underline-link-text s-link-style a-text-normal')]")
+
+    @property
+    def first_results(self):
+        return "//*[@data-cy='title-recipe']//*[contains(@class,'a-link-normal s-underline-text s-underline-link-text s-link-style a-text-normal')]"
+
+    @property
+    def __get_price(self):
+        return (By.XPATH,
+                "//*[@id='corePriceDisplay_desktop_feature_div']//*[@class='a-price-whole']")
+
     def select_All_dropdown(self, val):
         ele = WebDriverWait(self.driver, 10).until(EC.presence_of_element_located(self.all_dropdown))
         sel = Select(ele)
@@ -48,6 +62,17 @@ class amazonHomePage(Baseclass):
         li = self.driver.find_elements(By.XPATH, self.search_Suggestions)
         li[index - 1].click()
 
-        if __name__ == "__main__":
-            print(
-                "Print inside all the lloooops====================================================================================")
+    def click_first_item_from_results(self, index):
+        WebDriverWait(self.driver, 10).until(
+            EC.presence_of_element_located(self.first_result))
+        li = self.driver.find_elements(By.XPATH, self.first_results)
+        li[index - 1].click()
+
+    def get_product_price(self):
+        ele = WebDriverWait(self.driver, 10).until(
+            EC.presence_of_element_located(self.__get_price))
+        return ele.text
+
+    if __name__ == "__main__":
+        print(
+            "Print inside all the lloooops====================================================================================")

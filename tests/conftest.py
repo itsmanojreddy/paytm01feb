@@ -25,6 +25,10 @@ def setup(request):
     Web_driver.close()
 
 
+def pytest_runtest_teardown(item):
+    print(f"Tearing down test-----------------------------------------------------------------------: {item.name}")
+
+
 # @pytest.fixture(scope='function', autouse=True)
 # def setupFunction():
 #     Web_driver.get("https://www.amazon.in/")
