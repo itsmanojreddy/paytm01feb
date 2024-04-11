@@ -12,7 +12,7 @@ RUN apt-get update \
     && rm -rf /var/lib/apt/lists/*
 
 # Set the ChromeDriver version you want to use
-ARG CHROME_DRIVER_VERSION="your_desired_version_here"
+ARG CHROME_DRIVER_VERSION="123.0.6312.106"
 
 # Download and install ChromeDriver
 RUN wget -q -O /tmp/chromedriver.zip https://chromedriver.storage.googleapis.com/${CHROME_DRIVER_VERSION}/chromedriver_linux64.zip \
