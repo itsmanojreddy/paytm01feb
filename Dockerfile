@@ -1,5 +1,8 @@
 # Use an official Python runtime as the base image
 FROM python:3.9-slim
+FROM alpine:latest
+
+RUN apk update && apk add chromium chromium-chromedriver
 
 # Set environment variables
 ENV PYTHONDONTWRITEBYTECODE 1
