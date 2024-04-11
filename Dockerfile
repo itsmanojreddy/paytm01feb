@@ -15,7 +15,7 @@ RUN apt-get update \
 ARG CHROME_DRIVER_VERSION="123.0.6312.106"
 
 # Download and install ChromeDriver
-RUN wget -q -O /tmp/chromedriver.zip https://chromedriver.storage.googleapis.com/123.0.6312.106/chromedriver_linux64.zip \
+RUN wget -q -O /tmp/chromedriver.zip https://chromedriver.storage.googleapis.com/100.0.4896.20/chromedriver_linux64.zip \
     && unzip /tmp/chromedriver.zip -d /usr/bin \
     && rm /tmp/chromedriver.zip \
     && chmod +x /usr/bin/chromedriver

@@ -10,7 +10,7 @@ from selenium.webdriver.chrome.service import Service
 @pytest.fixture(scope='session')
 def setup(request):
     global Web_driver
-    s = Service(ChromeDriverManager(driver_version='123.0.6312.106').install())
+    s = Service(ChromeDriverManager(driver_version='100.0.4896.20').install())
     chrome_options = Options()
     chrome_options.add_argument("window-size=1920,1080")
     chrome_options.add_argument("disable-popup-blocking")
