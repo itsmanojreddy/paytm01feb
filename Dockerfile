@@ -5,6 +5,31 @@ FROM python:3.9-slim
 ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
 
+# Install any necessary dependencies for ChromeDriver
+RUN apt-get update \
+    && apt-get install -y wget unzip \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
+
+# Set the ChromeDriver version you want to use
+ARG CHROME_DRIVER_VERSION="your_desired_version_here"
+
+# Download and install ChromeDriver
+RUN wget -q -O /tmp/chromedriver.zip https://chromedriver.storage.googleapis.com/${CHROME_DRIVER_VERSION}/chromedriver_linux64.zip \
+    && unzip /tmp/chromedriver.zip -d /usr/bin \
+    && rm /tmp/chromedriver.zip \
+    && chmod +x /usr/bin/chromedriver
+
+# Set the PATH environment variable to include the directory containing ChromeDriver
+ENV PATH="/usr/bin:${PATH}"
+
+# Set any other configurations or environment variables needed for your Selenium tests
+
+# Copy your test scripts and any other necessary files into the Docker image
+COPY . /app
+
+
+
 # Set the working directory in the container
 WORKDIR /app
 
