@@ -6,6 +6,12 @@ FROM ubuntu:latest
 ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
 
+# Install system dependencies
+RUN apt-get update \
+    && apt-get install -y python3 python3-pip \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
+
 # Install any necessary dependencies for ChromeDriver
 RUN apt-get update \
     && apt-get install -y wget unzip \
@@ -34,13 +40,21 @@ COPY . /app
 
 # Set the working directory in the container
 WORKDIR /app
+# Copy the requirements.txt file from your local directory to the container
+COPY requirements.txt .
+
+# Install Python dependencies from requirements.txt
+RUN pip3 install --no-cache-dir -r requirements.txt
+
+# Copy your application code into the container
+COPY . /app
 
 # Install dependencies
-COPY requirements.txt .
-RUN pip install --no-cache-dir -r requirements.txt
+# COPY requirements.txt .
+# RUN pip install --no-cache-dir -r requirements.txt
 
 # Copy the application code into the container
 COPY . .
 
 # Run pytest with specific markers when the container starts
-CMD ["python", "-m","pytest", "-m", "test123"]
+CMD ["python3", "-m","pytest", "-m", "test123"]
