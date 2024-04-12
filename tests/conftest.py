@@ -10,14 +10,19 @@ from selenium.webdriver.chrome.service import Service
 @pytest.fixture(scope='session')
 def setup(request):
     global Web_driver
-    s = Service(ChromeDriverManager(driver_version='100.0.4896.20').install())
-    chrome_options = Options()
-    chrome_options.add_argument("window-size=1920,1080")
-    chrome_options.add_argument("disable-popup-blocking")
-    chrome_options.add_argument(
-        "--disable-notifications")  # disable notifications like allow location/Show notifications
-    chrome_options.add_argument('--headless')
-    Web_driver = webdriver.Chrome(service=s, options=chrome_options)
+    # s = Service(ChromeDriverManager(driver_version='100.0.4896.20').install())
+    # chrome_options = Options()
+    # chrome_options.add_argument("window-size=1920,1080")
+    # chrome_options.add_argument("disable-popup-blocking")
+    # chrome_options.add_argument(
+    #     "--disable-notifications")  # disable notifications like allow location/Show notifications
+    # chrome_options.add_argument('--headless')
+    # Web_driver = webdriver.Chrome(service=s, options=chrome_options)
+    options = Options()
+    options.add_argument("--headless")  # Run Chrome in headless mode (no GUI)
+    options.add_argument("--no-sandbox")  # Bypass OS security model
+    options.add_argument("--disable-dev-shm-usage")  # Overcome limited resource problems
+    Web_driver = webdriver.Chrome(options=options)
     Web_driver.maximize_window()
     # Web_driver.get("https://paytm.com/")
     Web_driver.get("https://www.policybazaar.com/")
