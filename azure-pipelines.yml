@@ -31,5 +31,9 @@ steps:
 #   displayName: 'Install dependencies'
 
 - script: |
-    python -m pytest -m test123 --html=reportss.html --capture sys
+    python -m pytest -m test123 --html=reportsss.html --capture sys
   displayName: 'pytest'
+- task: PublishBuildArtifacts@1
+  inputs:
+    pathToPublish: '$(System.DefaultWorkingDirectory)/reportsss.html'
+    artifactName: 'pytest-html-report'
