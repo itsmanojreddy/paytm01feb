@@ -29,4 +29,8 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY . /app/
 
 # Run pytest with specific markers when the container starts
-CMD ["python3", "-m","pytest", "-m", "test123"]
+CMD ["python3", "-m","pytest", "-m", "test123","--html=reportss.html","--capture","sys"]
+
+
+
+# --html=reportss.html --capture sys
