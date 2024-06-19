@@ -3,6 +3,7 @@ def oddCharac():
     print(inp[::2])
 
 inp = "a1b2c3"
-print(inp[::2])s
+print(inp[::2])
 print(inp[::1])
 print(inp[::3])
+# // at 16:27
