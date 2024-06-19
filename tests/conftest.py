@@ -41,7 +41,8 @@ def pytest_runtest_teardown(item):
 
 @pytest.fixture(autouse=True)
 def eachTest():
-    Web_driver.get("https://www.amazon.in/")
+    # Web_driver.get("https://www.amazon.in/")
+    pass
     yield
 
 
@@ -69,4 +70,5 @@ def pytest_runtest_makereport(item):
 
 
 def _capture_screenshot(name):
-    Web_driver.get_screenshot_as_file(name)
+    # Web_driver.get_screenshot_as_file(name)
+    pass
